@@ -15,4 +15,6 @@ Este proyecto es una aplicación web sencilla e interactiva para gestionar tarea
 
 ## 📂 Cómo ver el proyecto
 Puedes descargar el código o clonar el repositorio para verlo en tu computadora.
-*(Aquí pondremos el enlace a la web cuando activemos GitHub Pages)*
+## 📂 Cómo ver el proyecto
+Puedes ver el proyecto funcionando aquí:
+👉 [Ver Lista de Tareas en vivo](https://tomasdiego12.github.io/lista-de-tareas/)
