@@ -1,0 +1,79 @@
+/*empezamos con el body(cuerpo)*/
+body {
+    font-family: 'Segoe UI';
+    background-color: #2c3e50;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.contenedor {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #219150;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.completada {
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
+}
+/* Un truquito para que el mouse cambie al pasar por el texto */
+li span  {
+    cursor: pointer;
+    flex-grow:1;
+}
+
+#btnBorrarTodo {
+    background-color: #f31800;
+    margin-bottom: 15px;
+    margin-left: auto;
+    display: block;
+}
