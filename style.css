@@ -11,8 +11,10 @@ body {
     background-color: white;
     padding: 30px;
     border-radius: 10px;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
 }
 
 h1 {
@@ -76,4 +78,10 @@ li span  {
     margin-bottom: 15px;
     margin-left: auto;
     display: block;
+}
+
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
 }
