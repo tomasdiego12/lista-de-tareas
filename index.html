@@ -3,25 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de tareas</title>
+    <title>Agenda Personal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="contenedor">
-        <h1>📝 Mis Tareas </h1>
+    <div id="fechaHoy" class="fecha">Cargando Fecha...</div>
 
-        <h3 id="contador">Tareas Pendientes: 0</h3>
+    <h1>📝 Mis Tareas </h1>
 
-        <button id="btnBorrarTodo">🗑️ Borrar Todo</button>
-        
+    <div class="mood-tracker">
+        <p>¿Como te sientes hoy?</p>
+
+        <div class="mood-buttons">
+            <button class="mood-btn" data-mood="feliz" title="Me siento Feliz"><i class="fa-regular fa-face-grin-beam fa-2xl"></i></button>
+
+            <button class="mood-btn" data-mood="tranquilo" title="Estoy Tranquilo"><i class="fa-regular fa-face-smile-beam fa-2xl"></i></button>
+
+            <button class="mood-btn" data-mood="cansado" title="Me siento Cansado"><i class="fa-regular fa-face-tired fa-2xl"></i></button>
+
+            <button class="mood-btn" data-mood="triste" title="Estoy Triste"><i class="fa-regular fa-face-sad-tear fa-2xl"></i></button>
+        </div>
+    </div>
+
+    <h3 id="contador">Tareas Pendientes: 0</h3>
+
+        <div class="filtros">
+            <button id="btnTodas">Todas </button>
+            <button id="btnPendientes">Pendientes</button>
+            <button id="btnCompletadas">Completadas</button>
+        </div>
+
     <div class="input-group">
-        <input type="text" id="inputTarea" placeholder="¿Qué tienes que hacer hoy?">
+        <input type="text" id="inputTarea" placeholder="Nueva Tarea...">
+
+        <select id="selectPrioridad">
+            <option value="baja">Baja</option>
+            <option value="media">Media</option>
+            <option value="alta">Alta</option>
+        </select>
+
         <button id="btnAgregar">Agregar</button>
     </div>
 
     <ul id="listaTareas">
         </ul>
+    <button id="btnBorrarTodo">🗑️ Borrar Todo</button>
+
+    <div class="notas-area">
+        <label for="notas"> Notas / Ideas</label>
+        <textarea id="notas" placeholder="Escribi lo que piensas..."></textarea>
+        <button id="btnGuardarNotas">Enviar</button>
+    </div>
 </div>
 
 <script src="script.js"></script>

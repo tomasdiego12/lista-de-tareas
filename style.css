@@ -1,51 +1,245 @@
-/*empezamos con el body(cuerpo)*/
+/* =========================================
+   1. IMPORTACIÓN DE FUENTES (GOOGLE FONTS)
+   ========================================= */
+/* Traemos las fuentes: Playfair (Títulos), Quicksand (Cuerpo) y Dancing Script (Decoración) */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,600;1,600&family=Quicksand:wght@400;600&display=swap');
+
+/* =========================================
+   2. VARIABLES GLOBALES (:ROOT)
+   ========================================= */
+/* Aquí definimos la paleta de colores para cambiarla fácilmente en el futuro */
+:root {
+    /* Colores Principales */
+    --fondo-pantalla: #dae1e7;    /* Gris azulado (Mesa) */
+    --fondo-tarjeta: #ffffff;     /* Blanco (Papel) */
+    --texto-principal: #2c3e50;   /* Azul oscuro */
+    --texto-secundario: #8899a6;  /* Gris suave */
+    
+    /* Colores de Acento */
+    --color-acento: #8da4b8;      /* Azul acero pastel */
+    --color-acento-hover: #718ba3; /* Un poco más oscuro para el hover */
+    
+    /* Bordes */
+    --borde-suave: #f0f4f8;
+    
+    /* Tipografías */
+    --fuente-cuerpo: 'Quicksand', sans-serif;
+    --fuente-titulo: 'Playfair Display', serif;
+}
+
+/* =========================================
+   3. RESET Y CONFIGURACIÓN BASE
+   ========================================= */
+* {
+    /* Esto es clave: evita que el padding agrande las cajas y rompa el diseño */
+    box-sizing: border-box; 
+}
+
 body {
-    font-family: 'Segoe UI';
-    background-color: #2c3e50;
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--fondo-pantalla);
+    min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+    display: flex;     /* Flexbox para centrar la tarjeta */
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* =========================================
+   4. CONTENEDOR PRINCIPAL (LA TARJETA)
+   ========================================= */
+.contenedor {
+    background-color: var(--fondo-tarjeta);
+    padding: 3rem 2rem;
+    border-radius: 5px; /* Bordes apenas redondeados */
+    width: 90%;
+    max-width: 500px;
+    /* Sombra suave para dar efecto de "flotar" */
+    box-shadow: 0 5px 20px rgba(0,0,0, 0.05);
+    position: relative;
+    border: 1px solid var(--borde-suave);
+}
+
+/* =========================================
+   5. TEXTOS Y TÍTULOS
+   ========================================= */
+h1 {
+    font-family: var(--fuente-titulo);
+    text-align: center;
+    color: var(--texto-principal);
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+/* Línea decorativa debajo del título */
+h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--texto-principal);
+    margin: 10px auto;
+}
+
+.fecha {
+    text-align: center;
+    color: var(--color-acento);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+#contador {
+    text-align: center;
+    font-family: var(--fuente-cuerpo);
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+/* =========================================
+   6. MOOD TRACKER (ICONOS DE ÁNIMO)
+   ========================================= */
+.mood-tracker {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.mood-tracker p {
+    color: var(--texto-secundario);
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+
+.mood-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: transform 0.2s; /* Animación suave al crecer */
+}
+
+/* Color por defecto del ícono (gris apagado) */
+.mood-buttons button i {
+    color: #808080; 
+    transition: color 0.3s;
+}
+
+/* Al pasar el mouse */
+.mood-buttons button:hover {
+    transform: scale(1.1);
+}
+
+.mood-buttons button:hover i {
+    color: var(--color-acento);
+}
+
+/* Estado Activo (Cuando se selecciona una carita) */
+.mood-buttons button.selected i {
+    color: #ffb7b2; /* Color salmón suave */
+    transform: scale(1.1);
+}
+
+/* =========================================
+   7. BOTONES DE FILTRO
+   ========================================= */
+.filtros {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
-.contenedor {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
+.filtros button {
+    background: transparent;
+    border: none;
+    color: var(--texto-secundario);
+    font-family: var(--fuente-cuerpo);
+    padding: 5px 10px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
+.filtros button:hover {
+    color: var(--texto-principal);
 }
 
+/* Subrayado animado al pasar el mouse */
+.filtros button:hover::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-acento);
+    border-radius: 50%;
+}
+
+/* =========================================
+   8. INPUT Y BOTÓN AGREGAR
+   ========================================= */
 .input-group {
+    background-color: #f4f7f6;
+    padding: 5px;
+    border-radius: 50px;
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #e1e8ed;
 }
 
 input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    flex-grow: 1; /* Ocupa todo el espacio disponible */
+    background: transparent;
+    border: none;
+    padding: 10px 20px;
+    outline: none;
+    color: #555;
+    font-family: var(--fuente-cuerpo);
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #27ae60;
-    color: white;
+#selectPrioridad {
+    background: transparent;
     border: none;
-    border-radius: 5px;
+    border-left: 1px solid #ddd; /* Línea separadora */
+    padding: 10px 15px;
+    color: var(--texto-secundario);
+    outline: none;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #219150;
+#btnAgregar {
+    background-color: var(--color-acento); 
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btnAgregar:hover {
+    background-color: var(--color-acento-hover);
+}
+
+/* =========================================
+   9. LISTA DE TAREAS (ESTILO ARCO)
+   ========================================= */
+#listaTareas {
+    background-color: #f8fbff;
+    border: 2px solid #eef2f5;
+    /* La forma de arco: Arriba-Izq, Arriba-Der, Abajo-Der, Abajo-Izq */
+    border-radius: 100px 100px 20px 20px;
+    padding: 40px 20px 20px 20px;
+    margin-top: 30px;
+    min-height: 200px; /* Altura mínima aunque esté vacío */
 }
 
 ul {
@@ -54,34 +248,122 @@ ul {
 }
 
 li {
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
+    border-bottom: 1px solid var(--borde-suave);
+    padding: 15px 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    color: #555;
 }
 
-.completada {
+/* Puntito por defecto (Círculo vacío) */
+li::before {
+    content: "○"; 
+    margin-right: 15px;
+    color: var(--color-acento);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Estilo para tarea tachada */
+.terminada p {
     text-decoration: line-through;
-    color: gray;
-    opacity: 0.7;
-}
-/* Un truquito para que el mouse cambie al pasar por el texto */
-li span  {
-    cursor: pointer;
-    flex-grow:1;
+    color: #bdc3c7;
 }
 
-#btnBorrarTodo {
-    background-color: #f31800;
-    margin-bottom: 15px;
-    margin-left: auto;
+/* Y cambiamos el puntito de color a gris también */
+.terminada::before {
+    color: #bdc3c7; 
+}
+
+/* --- Colores según Prioridad --- */
+li.prioridad-alta::before {
+    content: "●"; 
+    color: #e74c3c; /* Rojo */
+}
+li.prioridad-media::before {
+    content: "●"; 
+    color: #f39c12; /* Naranja */
+}
+li.prioridad-baja::before {
+    content: "●"; 
+    color: #27ae60; /* Verde */
+}
+
+/* Botón de Borrar (Tachito de basura) */
+li button {
+    background: none;
+    border: none;
+    color: #364551;
+    cursor: pointer;
+    margin-left: auto; /* Empuja el botón a la derecha */
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+}
+
+li button:hover {
+    opacity: 1;
+    color: #d63031; /* Rojo al pasar el mouse */
+}
+
+/* =========================================
+   10. ÁREA DE NOTAS Y PIE DE PÁGINA
+   ========================================= */
+.notas-area {
+    margin-top: 20px;
+    border-top: 1px dashed #ddd; /* Línea punteada */
+    padding-top: 15px;
+}
+
+.notas-area label {
+    display: block;
+    color: var(--texto-secundario);
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: var(--fuente-cuerpo);
+    resize: none; /* Evita que el usuario deforme el diseño */
+    outline: none;
+    background-color: #fcfdfd;
+}
+
+#btnGuardarNotas {
+    background-color: var(--color-acento); 
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 25px auto 0;
     display: block;
 }
 
-@media (max-width: 600px) {
-    .input-group {
-        flex-direction: column;
-    }
+#btnGuardarNotas:hover {
+    background-color: var(--color-acento-hover);
+}
+
+#btnBorrarTodo {
+    display: block;
+    margin: 40px auto 0;
+    background: none;
+    border: none;
+    color: #e7aeb3;
+    font-family: var(--fuente-titulo);
+    font-style: italic;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#btnBorrarTodo:hover {
+    color: #d6898f;
+    text-decoration: underline;
 }
